@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aa695043d107492b90de23f9fe84d138" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineMarketModel.AspNetRole" Width="1.5" PointX="1.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.AspNetUserClaim" Width="1.5" PointX="3.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.AspNetUserLogin" Width="1.5" PointX="3.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.AspNetUser" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.AttributeValueType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.Category" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.CategoryAttribute" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.City" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.Document" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.Item" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.ListAttribute" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.ListOption" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.Location" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineMarketModel.Seller" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="OnlineMarketModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_Seller_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_CategoryAttributes_AttributeValueTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_CategoryAttributes_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_Item_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_CategoryAttributes_ListAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_Location_City" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_Item_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_Item_Seller" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.FK_ListOptions_ListAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineMarketModel.ItemImages" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OnlineMarketModel.ItemAttribute" Width="1.5" PointX="8.25" PointY="4.625" />
+        <AssociationConnector Association="OnlineMarketModel.FK_ItemAttributes_CategoryAttributes" />
+        <AssociationConnector Association="OnlineMarketModel.FK_ItemAttributes_Item" />
+        <EntityTypeShape EntityType="OnlineMarketModel.ItemStatu" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="OnlineMarketModel.FK_Item_ItemStatus" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

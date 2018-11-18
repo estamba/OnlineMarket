@@ -1,0 +1,1191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OnlineMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AttributeValueTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryAttributes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ValueType" Type="int" Nullable="false" />
+          <Property Name="ListId" Type="int" />
+          <Property Name="IsMandatory" Type="bit" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Extension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ContentType" Type="varchar" MaxLength="150" />
+          <Property Name="Content" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="SellerID" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateUtc" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="PictureCount" Type="int" Nullable="false" />
+          <Property Name="CoverPhotoId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ViewCount" Type="int" />
+          <Property Name="ItemStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ItemAttributes">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="AttributeValue" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemImages">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ImageId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemStatus">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ListAttributes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ListOptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ListId" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Location" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateAdded" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CategoryAttributes_AttributeValueTypes">
+          <End Role="AttributeValueTypes" Type="Self.AttributeValueTypes" Multiplicity="1" />
+          <End Role="CategoryAttributes" Type="Self.CategoryAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttributeValueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryAttributes">
+              <PropertyRef Name="ValueType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAttributes_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoryAttributes" Type="Self.CategoryAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryAttributes">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAttributes_ListAttributes">
+          <End Role="ListAttributes" Type="Self.ListAttributes" Multiplicity="0..1" />
+          <End Role="CategoryAttributes" Type="Self.CategoryAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryAttributes">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ItemStatus">
+          <End Role="ItemStatus" Type="Self.ItemStatus" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemStatus">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemAttributes_CategoryAttributes">
+          <End Role="CategoryAttributes" Type="Self.CategoryAttributes" Multiplicity="1" />
+          <End Role="ItemAttributes" Type="Self.ItemAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemAttributes_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemAttributes" Type="Self.ItemAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemAttributes">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemImages_Documents">
+          <End Role="Documents" Type="Self.Documents" Multiplicity="1" />
+          <End Role="ItemImages" Type="Self.ItemImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemImages">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemImages_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemImages" Type="Self.ItemImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemImages">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListOptions_ListAttributes">
+          <End Role="ListAttributes" Type="Self.ListAttributes" Multiplicity="1" />
+          <End Role="ListOptions" Type="Self.ListOptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListOptions">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Seller" Type="Self.Seller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seller">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OnlineMarketModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttributeValueTypes" EntityType="Self.AttributeValueTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryAttributes" EntityType="Self.CategoryAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemAttributes" EntityType="Self.ItemAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemImages" EntityType="Self.ItemImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemStatus" EntityType="Self.ItemStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListAttributes" EntityType="Self.ListAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListOptions" EntityType="Self.ListOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CategoryAttributes_AttributeValueTypes" Association="Self.FK_CategoryAttributes_AttributeValueTypes">
+            <End Role="AttributeValueTypes" EntitySet="AttributeValueTypes" />
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAttributes_Category" Association="Self.FK_CategoryAttributes_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAttributes_ListAttributes" Association="Self.FK_CategoryAttributes_ListAttributes">
+            <End Role="ListAttributes" EntitySet="ListAttributes" />
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemStatus" Association="Self.FK_Item_ItemStatus">
+            <End Role="ItemStatus" EntitySet="ItemStatus" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Location" Association="Self.FK_Item_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Seller" Association="Self.FK_Item_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemAttributes_CategoryAttributes" Association="Self.FK_ItemAttributes_CategoryAttributes">
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+            <End Role="ItemAttributes" EntitySet="ItemAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemAttributes_Item" Association="Self.FK_ItemAttributes_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="ItemAttributes" EntitySet="ItemAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemImages_Documents" Association="Self.FK_ItemImages_Documents">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="ItemImages" EntitySet="ItemImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemImages_Item" Association="Self.FK_ItemImages_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="ItemImages" EntitySet="ItemImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListOptions_ListAttributes" Association="Self.FK_ListOptions_ListAttributes">
+            <End Role="ListAttributes" EntitySet="ListAttributes" />
+            <End Role="ListOptions" EntitySet="ListOptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_City" Association="Self.FK_Location_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_AspNetUsers" Association="Self.FK_Seller_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Seller" EntitySet="Seller" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnlineMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Sellers" Relationship="Self.FK_Seller_AspNetUsers" FromRole="AspNetUsers" ToRole="Seller" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AttributeValueType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CategoryAttributes" Relationship="Self.FK_CategoryAttributes_AttributeValueTypes" FromRole="AttributeValueTypes" ToRole="CategoryAttributes" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CategoryAttributes" Relationship="Self.FK_CategoryAttributes_Category" FromRole="Category" ToRole="CategoryAttributes" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_Category" FromRole="Category" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="CategoryAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ValueType" Type="Int32" Nullable="false" />
+          <Property Name="ListId" Type="Int32" />
+          <NavigationProperty Name="AttributeValueType" Relationship="Self.FK_CategoryAttributes_AttributeValueTypes" FromRole="CategoryAttributes" ToRole="AttributeValueTypes" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoryAttributes_Category" FromRole="CategoryAttributes" ToRole="Category" />
+          <NavigationProperty Name="ListAttribute" Relationship="Self.FK_CategoryAttributes_ListAttributes" FromRole="CategoryAttributes" ToRole="ListAttributes" />
+          <Property Name="IsMandatory" Type="Boolean" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ItemAttributes" Relationship="OnlineMarketModel.FK_ItemAttributes_CategoryAttributes" FromRole="CategoryAttribute" ToRole="ItemAttribute" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Location_City" FromRole="City" ToRole="Location" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContentType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Items" Relationship="Self.ItemImages" FromRole="Documents" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="SellerID" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Item_Category" FromRole="Item" ToRole="Category" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Item_Location" FromRole="Item" ToRole="Location" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_Item_Seller" FromRole="Item" ToRole="Seller" />
+          <NavigationProperty Name="Documents" Relationship="Self.ItemImages" FromRole="Item" ToRole="Documents" />
+          <NavigationProperty Name="ItemAttributes" Relationship="OnlineMarketModel.FK_ItemAttributes_Item" FromRole="Item" ToRole="ItemAttribute" />
+          <Property Name="PictureCount" Type="Int32" Nullable="false" />
+          <Property Name="CoverPhotoId" Type="Guid" Nullable="false" />
+          <Property Name="ViewCount" Type="Int32" />
+          <Property Name="ItemStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ItemStatu" Relationship="OnlineMarketModel.FK_Item_ItemStatus" FromRole="Item" ToRole="ItemStatu" />
+        </EntityType>
+        <EntityType Name="ListAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ListName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CategoryAttributes" Relationship="Self.FK_CategoryAttributes_ListAttributes" FromRole="ListAttributes" ToRole="CategoryAttributes" />
+          <NavigationProperty Name="ListOptions" Relationship="Self.FK_ListOptions_ListAttributes" FromRole="ListAttributes" ToRole="ListOptions" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ListOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ListId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ListAttribute" Relationship="Self.FK_ListOptions_ListAttributes" FromRole="ListOptions" ToRole="ListAttributes" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Location_City" FromRole="Location" ToRole="City" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_Location" FromRole="Location" ToRole="Item" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Seller_AspNetUsers" FromRole="Seller" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_Seller" FromRole="Seller" ToRole="Item" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Seller" Type="Self.Seller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seller">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAttributes_AttributeValueTypes">
+          <End Role="AttributeValueTypes" Type="Self.AttributeValueType" Multiplicity="1" />
+          <End Role="CategoryAttributes" Type="Self.CategoryAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttributeValueTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryAttributes">
+              <PropertyRef Name="ValueType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAttributes_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoryAttributes" Type="Self.CategoryAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryAttributes">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAttributes_ListAttributes">
+          <End Role="ListAttributes" Type="Self.ListAttribute" Multiplicity="0..1" />
+          <End Role="CategoryAttributes" Type="Self.CategoryAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryAttributes">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListOptions_ListAttributes">
+          <End Role="ListAttributes" Type="Self.ListAttribute" Multiplicity="1" />
+          <End Role="ListOptions" Type="Self.ListOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListOptions">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="ItemImages">
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="OnlineMarketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="AttributeValueTypes" EntityType="Self.AttributeValueType" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="CategoryAttributes" EntityType="Self.CategoryAttribute" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="ListAttributes" EntityType="Self.ListAttribute" />
+          <EntitySet Name="ListOptions" EntityType="Self.ListOption" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Sellers" EntityType="Self.Seller" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_AspNetUsers" Association="Self.FK_Seller_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Seller" EntitySet="Sellers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAttributes_AttributeValueTypes" Association="Self.FK_CategoryAttributes_AttributeValueTypes">
+            <End Role="AttributeValueTypes" EntitySet="AttributeValueTypes" />
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAttributes_Category" Association="Self.FK_CategoryAttributes_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAttributes_ListAttributes" Association="Self.FK_CategoryAttributes_ListAttributes">
+            <End Role="ListAttributes" EntitySet="ListAttributes" />
+            <End Role="CategoryAttributes" EntitySet="CategoryAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_City" Association="Self.FK_Location_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Location" Association="Self.FK_Item_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Seller" Association="Self.FK_Item_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListOptions_ListAttributes" Association="Self.FK_ListOptions_ListAttributes">
+            <End Role="ListAttributes" EntitySet="ListAttributes" />
+            <End Role="ListOptions" EntitySet="ListOptions" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="ItemImages" Association="Self.ItemImages">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <EntitySet Name="ItemAttributes" EntityType="OnlineMarketModel.ItemAttribute" />
+          <AssociationSet Name="FK_ItemAttributes_CategoryAttributes" Association="OnlineMarketModel.FK_ItemAttributes_CategoryAttributes">
+            <End Role="CategoryAttribute" EntitySet="CategoryAttributes" />
+            <End Role="ItemAttribute" EntitySet="ItemAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemAttributes_Item" Association="OnlineMarketModel.FK_ItemAttributes_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemAttribute" EntitySet="ItemAttributes" />
+          </AssociationSet>
+          <EntitySet Name="ItemStatus" EntityType="OnlineMarketModel.ItemStatu" />
+          <AssociationSet Name="FK_Item_ItemStatus" Association="OnlineMarketModel.FK_Item_ItemStatus">
+            <End Role="ItemStatu" EntitySet="ItemStatus" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ItemAttribute">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeValue" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryAttribute" Relationship="OnlineMarketModel.FK_ItemAttributes_CategoryAttributes" FromRole="ItemAttribute" ToRole="CategoryAttribute" />
+          <NavigationProperty Name="Item" Relationship="OnlineMarketModel.FK_ItemAttributes_Item" FromRole="ItemAttribute" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK_ItemAttributes_CategoryAttributes">
+          <End Type="OnlineMarketModel.CategoryAttribute" Role="CategoryAttribute" Multiplicity="1" />
+          <End Type="OnlineMarketModel.ItemAttribute" Role="ItemAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryAttribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemAttribute">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemAttributes_Item">
+          <End Type="OnlineMarketModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="OnlineMarketModel.ItemAttribute" Role="ItemAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemAttribute">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ItemStatu">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="OnlineMarketModel.FK_Item_ItemStatus" FromRole="ItemStatu" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK_Item_ItemStatus">
+          <End Type="OnlineMarketModel.ItemStatu" Role="ItemStatu" Multiplicity="0..1" />
+          <End Type="OnlineMarketModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemStatu">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnlineMarketModelStoreContainer" CdmEntityContainer="OnlineMarketEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="OnlineMarketModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="OnlineMarketModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="OnlineMarketModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="OnlineMarketModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttributeValueTypes">
+            <EntityTypeMapping TypeName="OnlineMarketModel.AttributeValueType">
+              <MappingFragment StoreEntitySet="AttributeValueTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="OnlineMarketModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryAttributes">
+            <EntityTypeMapping TypeName="OnlineMarketModel.CategoryAttribute">
+              <MappingFragment StoreEntitySet="CategoryAttributes">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="IsMandatory" ColumnName="IsMandatory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="OnlineMarketModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="OnlineMarketModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="OnlineMarketModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="CoverPhotoId" ColumnName="CoverPhotoId" />
+                <ScalarProperty Name="PictureCount" ColumnName="PictureCount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDateUtc" ColumnName="CreatedDateUtc" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListAttributes">
+            <EntityTypeMapping TypeName="OnlineMarketModel.ListAttribute">
+              <MappingFragment StoreEntitySet="ListAttributes">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ListName" ColumnName="ListName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListOptions">
+            <EntityTypeMapping TypeName="OnlineMarketModel.ListOption">
+              <MappingFragment StoreEntitySet="ListOptions">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="OnlineMarketModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sellers">
+            <EntityTypeMapping TypeName="OnlineMarketModel.Seller">
+              <MappingFragment StoreEntitySet="Seller">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="OnlineMarketModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ItemImages" TypeName="OnlineMarketModel.ItemImages" StoreEntitySet="ItemImages">
+            <EndProperty Name="Documents">
+              <ScalarProperty Name="Id" ColumnName="ImageId" />
+            </EndProperty>
+            <EndProperty Name="Item">
+              <ScalarProperty Name="Id" ColumnName="ItemId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="ItemAttributes">
+            <EntityTypeMapping TypeName="OnlineMarketModel.ItemAttribute">
+              <MappingFragment StoreEntitySet="ItemAttributes">
+                <ScalarProperty Name="AttributeValue" ColumnName="AttributeValue" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemStatus">
+            <EntityTypeMapping TypeName="OnlineMarketModel.ItemStatu">
+              <MappingFragment StoreEntitySet="ItemStatus">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

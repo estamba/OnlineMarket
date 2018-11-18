@@ -1,0 +1,464 @@
+﻿@model  AddDetailsViewModel
+ 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{ 
+    var seller = (Seller)ViewBag.seller;
+}
+
+        <!--************************************
+                Header End
+        *************************************-->
+        <!--************************************
+                Home Slider Start
+        *************************************-->
+      
+        <!--************************************
+                Home Slider End
+        *************************************-->
+        <!--************************************
+                Main Start
+        *************************************-->
+        <main id="tg-main" class="tg-main tg-haslayout">
+            <!--************************************
+                    About Us Start
+            *************************************-->
+            <div class="container">
+                <div class="row">
+                    <div id="tg-twocolumns" class="tg-twocolumns">
+                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+                            <aside id="tg-sidebar" class="tg-sidebar">
+                                @*<div class="tg-pricebox">
+                                    <div id="tg-flagstrapfour" class="tg-flagstrap" data-input-name="country"></div>
+                                    <div class="tg-priceandlastupdate">
+                                        <span>@ApplicationInfo.Currency @Model.ItemDetails.Price.Value.ToString("N")</span>
+                                        <span>Last Updated: 6 hours ago</span>
+                                    </div>
+                                </div>*@
+                                <div class="tg-sellercontactdetail">
+                                    <div class="tg-sellertitle"><h1>Seller Contact Detail</h1></div>
+                                    <div class="tg-sellercontact">
+                                        <div class="tg-memberinfobox">
+                                            <figure><a href="javascript:void(0);"><img src="/images/author/img-02.jpg" alt="image description"></a></figure>
+                                            <div class="tg-memberinfo">
+                                                <h3><a href="@Url.Action("Search","Item", new { SellerId=Model.ItemDetails.Seller.Id })">@Model.ItemDetails.Seller.Name</a></h3>
+
+                                                @{
+                                                if (Model.ItemDetails.Seller.DateAdded != null)
+                                                {
+                                                  <span>Member Since @Model.ItemDetails.Seller.DateAdded.Value.ToString("dddd, dd MMMM yyyy")</span>
+
+                                                }
+
+                                                }
+                                                <a class="tg-btnseeallads" href="@Url.Action("Search","Item", new { SellerId=Model.ItemDetails.Seller.Id })">See All Ads</a>
+                                            </div>
+                                        </div>
+                                        <a class="tg-btnphone" href="javascript:void(0);">
+                                            <i class="icon-phone-handset"></i>
+                                            <span data-toggle="tooltip" data-placement="top" title="Show Phone No." data-last="@seller.PhoneNumber">
+                                                <em>Show Phone No.</em>
+                                                <span>Click To Show Number</span>
+                                            </span>
+                                        </a>
+                                        @*<a class="tg-btnmakeanoffer" href="#" data-toggle="modal" data-target="#tg-modalmakeanoffer">
+                                            <i class="icon-briefcase"></i>
+                                            <span>
+                                                <em>Make An Offer</em>
+                                                <span>Place Your Best Offer Now</span>
+                                            </span>
+                                        </a>*@
+                                        @*<span class="tg-like tg-liked"><i class="fa fa-heart">Add To Favourite</i></span>*@
+                                    </div>
+                                    @*<div class="tg-sellerlocation">
+                                        <div id="tg-locationmap" class="tg-locationmap"></div>
+                                    </div>*@
+                                </div>
+                                <div class="tg-safetytips">
+                                    <div class="tg-safetytipstitle"><h2>Safety Tips</h2></div>
+                                    <div id="tg-safetytipsslider" class="tg-safetytipsslider slid owl-carousel">
+                                        <div class="item tg-safetytip active">
+                                            <h3>TIP # 01:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 02:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 03:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 04:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 05:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 06:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 07:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 08:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="item tg-safetytip">
+                                            <h3>TIP # 09:</h3>
+                                            <div class="tg-description">
+                                                <p>Quis nostrud exeration ullamcos nisiutia aliq ex ea commodo coquat eaute irure dolor rolatem renderit.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tg-currentandtotalslides" class="tg-currentandtotalslides"></div>
+                                </div>
+                                <div class="tg-reportthisadbox">
+                                    <div class="tg-reportthisadtitle">
+                                        <h2>Report This Ad</h2>
+                                    </div>
+                                    <form class="tg-formtheme tg-formreportthisad">
+                                        <h3>Select Reason:</h3>
+                                        <fieldset>
+                                            <div class="tg-radio">
+                                                <input id="tg-radioone" type="radio" name="repotadd" value="This is illegal/fraudulent" checked>
+                                                <label for="tg-radioone">This is illegal/fraudulent</label>
+                                            </div>
+                                            <div class="tg-radio">
+                                                <input id="tg-radiotwo" type="radio" name="repotadd" value="This ad is spam">
+                                                <label for="tg-radiotwo">This ad is spam</label>
+                                            </div>
+                                            <div class="tg-radio">
+                                                <input id="tg-radiothree" type="radio" name="repotadd" value="This ad is a duplicate">
+                                                <label for="tg-radiothree">This ad is a duplicate</label>
+                                            </div>
+                                            <div class="tg-radio">
+                                                <input id="tg-radiofour" type="radio" name="repotadd" value="This ad is in the wrong category">
+                                                <label for="tg-radiofour">This ad is in the wrong category</label>
+                                            </div>
+                                            <div class="tg-radio">
+                                                <input id="tg-radiofive" type="radio" name="repotadd" value="The ad goes against posting rules">
+                                                <label for="tg-radiofive">The ad goes against <span class="tg-themecolor">posting rules</span></label>
+                                            </div>
+                                            <div class="form-group tg-inputwithicon">
+                                                <i class="icon-bubble"></i>
+                                                <textarea class="form-control" placeholder="Provide More Information"></textarea>
+                                            </div>
+                                            <div class="tg-btns">
+                                                <button class="tg-btn" type="button">Send Report</button>
+                                                <button class="tg-btn" type="button">Cancel</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+                            <div id="tg-content" class="tg-content">
+                                <div class="tg-ad tg-verifiedad tg-detail tg-addetail">
+                                    <div class="tg-adcontent">
+                                        <ul class="tg-pagesequence">
+                                            <li><a href="javascript:void(0);">Laptops &amp; Pcs</a></li>
+                                            <li><a href="javascript:void(0);">Laptops</a></li>
+                                            <li><span>HP</span></li>
+                                        </ul>
+                                        <div class="tg-adtitle">
+                                            <h2>@Model.ItemDetails.Name</h2>
+                                        </div>
+                                        <ul class="tg-admetadata">
+                                            <li>By: <a href="@Url.Action("Details","Item",new {id = Model.ItemDetails.Id })">@seller.Name</a></li>
+                                            <li><i class="icon-earth"></i><address>@Model.ItemDetails.Location.Name, @Model.ItemDetails.Location.City.Name</address></li>
+                                            <li><i class="icon-eye"></i><span>@Model.ItemDetails.ViewCount</span></li>
+                                        </ul>
+                                        <div class="tg-share">
+                                            <strong>share:</strong>
+                                            <ul class="tg-socialicons">
+                                                <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+                                                <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+                                                <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+                                                <li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+                                                <li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
+                                            </ul>
+                                            <div class="tg-adadded">
+                                                <i class="icon-smartphone"></i>
+                                                <span>Added @Model.ItemDetails.CreatedDate</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+
+
+
+
+                                    <div class="col-sm-9 page-content col-thin-right">
+                                        <div class="inner inner-box ads-details-wrapper">
+                                            @*<h2>
+                    Xperia™ C3 Dual available
+                    <small class="label label-default adlistingtype">Company ad</small>
+                </h2>
+                <span class="info-row">
+                    <span class="date"><i class=" icon-clock"> </i> Today 1:21 pm </span> - <span class="category">Electronics</span>- <span class="item-location">
+                        <i class="fa fa-map-marker"></i> New York
+                    </span>
+                </span>*@
+
+                                            <div class="ads-image">
+                                                <h1 class="pricetag"> @ApplicationInfo.Currency @Model.ItemDetails.Price.Value.ToString("N")</h1>
+                                                <ul class="bxslider">
+                                                    @{
+                                                        foreach (var image in Model.ItemDetails.Documents)
+                                                        {
+                                                            <li><img src="@Url.Action("Image","Item",new {Id =image.Id })" alt="img" /></li>
+
+                                                        }
+                                                    }
+                                                   
+                                                </ul>
+                                                <div id="bx-pager">
+                                                    @{
+                                                        int index = 0;
+                                                        foreach (var image in Model.ItemDetails.Documents)
+                                                        {
+                                                            <a class="thumb-item-link" data-slide-index="@index" href="">
+                                                                <img src="@Url.Action("Image","Item",new {Id =image.Id })" alt="img" />
+                                                            </a>
+                                                            index++;
+                                                        }
+                                                    }
+                                                    @*<a class="thumb-item-link" data-slide-index="0" href="">
+                                                        <img src="~/images/item/tp/Image00006.jpg" alt="img" />
+                                                    </a>
+                                                    <a class="thumb-item-link" data-slide-index="1" href="">
+                                                        <img src="~/images/item/tp/Image00008.jpg" alt="img" />
+                                                    </a>
+                                                    <a class="thumb-item-link" data-slide-index="2" href="">
+                                                        <img src="~/images/item/tp/Image00003.jpg" alt="img" />
+                                                    </a>*@
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--/.ads-details-wrapper-->
+
+                                    </div>
+
+
+
+                                    @*<div id="my-carousel">
+                                        @{
+                                            foreach (var picture in Model.ItemDetails.Documents)
+                                            {
+                                                <div class="item"><img src="@Url.Action("Image", "Item", new { id = picture.Id })" alt="The Last of us"></div>
+
+                                            }
+                                        }
+
+
+                                    </div>*@
+                                    @*<figure>
+                                        <span class="tg-themetag tg-featuretag">featured</span>
+                                        <span class="tg-photocount">See  @Model.ItemDetails.Documents.Count Photos</span>
+                                        <div id="tg-productgallery" class="tg-productgallery"><p>Put your alt no-js content here.</p></div>
+
+                                    </figure>*@
+                                 
+                                    <div class="tg-description">
+                                        @Html.Raw(Model.ItemDetails.Description)
+                                    </div>
+                                </div>
+                                <div di class="tg-authorotherads">
+                                    <div class="tg-sectionhead">
+                                        <div class="tg-title">
+                                            <h2><e>More Ads By @Model.ItemDetails.Seller.Name </e></h2>
+                                        </div>
+                                        <div class="tg-description">
+                                            <p>Total @Model.ItemsBySeller.Count Ads Posted</p>
+                                        </div>
+                                    </div>
+                                    <div id="tg-authoradsslider" class="tg-ads tg-adsvtwo tg-authoradsslider owl-carousel">
+                                        @{
+
+                                            foreach (var item in Model.ItemsBySeller)
+                                            {
+                                                <div class="tg-ad tg-verifiedad item">
+                                                    <figure>
+                                                        <a href="@Url.Action("Details","Item",new {id = Model.ItemDetails.Id })" style="height:200px;min-width:200px;background-image:url('@Url.Action("Image", "Item", new { id = item.CoverPhotoId })');background-size:cover; background-position:center center;"></a>
+                                                    </figure>
+                                                    <div class="tg-adcontent">
+                                                        <ul class="tg-productcagegories">
+                                                            <li><a href="javascript:void(0);">@item.Category.Name</a></li>
+                                                        </ul>
+                                                        <div class="tg-adtitle">
+                                                            <h3><a href="@Url.Action("Details","Item",new {id = Model.ItemDetails.Id })">@item.Name</a></h3>
+                                                        </div>
+                                                        <time datetime="2017-06-06">Last Updated: 4 hours ago</time>
+                                                        <div class="tg-adprice"><h4>@item.Price</h4></div>
+                                                        <address>@item.Location.Name, @item.Location.City.Name</address>
+                                                        <div class="tg-phonelike">
+                                                            <a class="tg-btnphone" href="javascript:void(0);">
+                                                                <i class="icon-phone-handset"></i>
+                                                                <span data-toggle="tooltip" data-placement="top" title="Show Phone No." data-last="@item.Seller.PhoneNumber"><em>Show Phone No.</em></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="tg-youmayalsolike">
+                                <div class="tg-sectionhead">
+                                    <div class="tg-title">
+                                        <h2>You May Also Like</h2>
+                                    </div>
+                                    <div class="tg-description">
+                                        <p>@Model.SimilarItems.Count Similar Ads</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tg-ads">
+                                        @{
+                                            foreach (var item in Model.SimilarItems)
+                                            {
+                                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                                    <div class="tg-ad tg-verifiedad">
+                                                        <figure>
+                                                            <a href="@Url.Action("Details","Item",new {id = item.Id })" style="height:200px;min-width:200px;background-image:url('@Url.Action("Image", "Item", new { id = item.CoverPhotoId })');background-size:cover; background-position:center center;"></a>
+                                                        </figure>
+                                                        <div class="tg-adcontent">
+                                                            <ul class="tg-productcagegories">
+                                                                <li><a href="javascript:void(0);">@item.Category.Name</a></li>
+                                                            </ul>
+                                                            <div class="tg-adtitle">
+                                                                <h3><a href="@Url.Action("Details","Item",new {id = item.Id })">@item.Name</a></h3>
+                                                            </div>
+                                                            <time datetime="2017-06-06">Last Updated: 4 hours ago</time>
+                                                            <div class="tg-adprice"><h4>@ApplicationInfo.Currency @item.Price.Value.ToString("N")</h4></div>
+                                                            <address>44-46 abc Road, Manchester</address>
+                                                            <div class="tg-phonelike">
+                                                                <a class="tg-btnphone" href="javascript:void(0);">
+                                                                    <i class="icon-phone-handset"></i>
+                                                                    <span data-toggle="tooltip" data-placement="top" title="Show Phone No." data-last="@item.Seller.PhoneNumber"><em>Show Phone No.</em></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                      
+                                    </div>
+                                    <div class="tg-viewallbox">
+                                        <a class="tg-btn" href="@Url.Action("Search","Item",new {CategoryId =Model.ItemDetails.CategoryID })">View All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--************************************
+                    About Us End
+            *************************************-->
+        </main>
+        <!--************************************
+                Main End
+        *************************************-->
+        <!--************************************
+                Footer Start
+        *************************************-->
+      
+        <!--************************************
+                Footer End
+        *************************************-->
+  
+    <!--************************************
+            Wrapper End
+    *************************************-->
+    <!--************************************
+            Theme Modal Box Start
+    *************************************-->
+ 
+  
+
+@*@section customJs{
+    <script type="text/javascript">
+        
+        var ImageIds = [];
+        @{ 
+            foreach(var image in Model.ItemDetails.Documents)
+            {
+                @:ImageIds.push("@image.Id")
+            }
+        }
+        var ImageDisplayUrl = '@Url.Action("Image", "Item")'
+    </script>
+    }*@
+@section customJs{
+    
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script*@>
+
+@*<!-- include carousel slider plugin  -->
+<script src="/assets/js/owl.carousel.min.js"></script>
+
+<!-- include equal height plugin  -->
+<script src="/assets/js/jquery.matchHeight-min.js"></script>
+
+<!-- include jquery list shorting plugin plugin  -->
+<script src="/assets/js/hideMaxListItem.js"></script>*@
+
+<!-- bxSlider Javascript file -->
+<script src="/assets/plugins/bxslider/jquery.bxslider.js"></script>
+<script>
+    var ItemId = @Model.ItemDetails.Id;
+    function UpdateViewCount() {
+
+        $.ajax({
+            url: '@Url.Action("UpdateViewCount","Item")',
+
+            method: "POST",
+
+            data: { Id: ItemId }
+
+        });
+    }
+        $(document).ready(function () {
+            $('.bxslider').bxSlider({
+                pagerCustom: '#bx-pager'
+            });
+            UpdateViewCount();
+
+        })
+
+</script>
+    }

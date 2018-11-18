@@ -1,0 +1,138 @@
+﻿@model OnlineMarket.Models.LoginRegisterViewMdodel
+@{ 
+    ViewBag.Title = "Sign up";
+}
+<div class="container">
+    <div class="alert-danger"><b>@Html.ValidationSummary(false, "", new { @class = "text-danger" })</b></div>
+
+        <div class="row">
+            <div id="tg-content" class="tg-content">
+                <div class="tg-loginsignup">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="tg-logingarea">
+                            <h2>Login Now</h2>
+                                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "tg-formtheme tg-formloging" }))
+                                {
+                                    <fieldset>
+                                        @Html.Hidden("ReturnUrl",Request["ReturnUrl"])
+                                        <div class="form-group">
+                                            <input type="text" name="LoginEmail" class="form-control" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="LoginPassword" class="form-control" placeholder="Password">
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="tg-checkbox">
+                                                <input id="tg-rememberme" type="checkbox" name="rememberme" value="rememberme">
+                                                <label for="tg-rememberme">Keep me logged in</label>
+                                            </div>
+                                            <a class="tg-forgetpassword" href="javascript:void(0);">Forgot Password?</a>
+                                        </div>
+                                        <button class="tg-btn" type="submit">Login</button>
+                                    </fieldset>
+                                }
+                              
+                        </div>
+                        <div class="tg-texbox">
+                            <p><strong>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit.</strong></p>
+                            <p>Quis nostrud exercitation ullamcoaris nisiuate aliquip ex ea commodo consequat aute irure dolor atem reprehenderit in esse.</p>
+                            <ul>
+                                <li>Proident sunt in culpa qui officia</li>
+                                <li>Deserunt mollit anim idestorum</li>
+                                <li>Sedutana perspiciatis</li>
+                                <li>Aunde omnis iste natus voluptatem</li>
+                                <li>Cullamcoaris nisiutia aliquip</li>
+                            </ul>
+                        </div>*
+                    </div>
+                    <br />
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+
+
+                        <div class="tg-videobox">
+                            <figure>
+                                <img src="~/images/placeholder-02.jpg" alt="image description">
+                                <a class="tg-btnplayvideo" href="javascript:void(0);"><i class="icon-play3"></i></a>
+                            </figure>
+                        </div>
+                        <div class="tg-title">
+                            <h2>Register Now</h2>
+                        </div>
+                        <div class="tg-haslayout">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    @{
+                                        using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "tg-formtheme tg-formregister" }))
+                                        {
+                                                <fieldset>
+                                                    <div class="form-group tg-inputwithicon">
+                                                        <i class="icon-user"></i>
+                                                        <input type="text" name="Name" class="form-control" placeholder="Name">
+
+
+                                                    </div>
+                                                    <div class="form-group tg-inputwithicon">
+                                                        <i class="icon-envelope"></i>
+                                                        <input type="text" name="Email" class="form-control" placeholder="Email Address">
+
+                                                    </div>
+                                                    <div class="form-group tg-inputwithicon">
+                                                        <i class="icon-phone-handset"></i>
+                                                        <input type="text" name="PhoneNumber" class="form-control" placeholder="Phone Number">
+
+                                                    </div>
+                                                    <div class="form-group tg-inputwithicon">
+                                                        <i class="icon-lock"></i>
+                                                        <input type="password" name="Password" class="form-control" placeholder="Password">
+
+
+                                                    </div>
+                                                    <div class="form-group tg-inputwithicon">
+                                                        <i class="icon-lock"></i>
+                                                        <input type="password" name="ConfirmPassword" class="form-control"  placeholder="ConfirmPassword">
+
+
+                                                    </div>
+
+                                                    <button class="tg-btn" type="submit">Register</button>
+                                                </fieldset>
+                                        }
+                                    }
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                    <ul class="tg-sociallogingsignup">
+                                        <li class="tg-googleplus">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-google-plus"></i>
+                                                <span>Sign in with <strong>“Google”</strong></span>
+                                            </a>
+                                        </li>
+                                        <li class="tg-facebook">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-facebook"></i>
+                                                <span>Sign in with <strong>“Google”</strong></span>
+                                            </a>
+                                        </li>
+                                        <li class="tg-linkedin">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-linkedin"></i>
+                                                <span>Sign in with <strong>“Google”</strong></span>
+                                            </a>
+                                        </li>
+                                        <li class="tg-twitter">
+                                            <a href="javascript:void(0);">
+                                                <i class="fa fa-twitter"></i>
+                                                <span>Sign in with <strong>“Google”</strong></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

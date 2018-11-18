@@ -1,0 +1,78 @@
+﻿<header id="tg-header" class="tg-header tg-haslayout">
+    <div class="tg-navigationarea">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <strong class="tg-logo"><a href="@Url.Action("Index","Home")"><img src="~/images/logo.png" alt="company logo here"></a></strong>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div class="dropdown tg-themedropdown tg-userdropdown" style="margin-left: 16px">
+                            <a href="javascript:void(0);" id="tg-adminnav" class="tg-btndropdown" data-toggle="dropdown" style="padding:0px">
+                                <span class="tg-userdp" style="margin:0px;"><img src="~/images/users/17.jpg" alt="image description" width="46" height="46"></span>
+                            </a>
+                            <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-adminnav">
+                                <li>
+                                    <a href="dashboard.html">
+                                        <i class="icon-chart-bars"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <i class="icon-cog"></i>
+                                        <span>Profile Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <i class="icon-layers"></i>
+                                        <span>My Ads</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <i class="icon-envelope"></i>
+                                        <span>Offers/Messages</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="dashboard-myfavourites.html">
+                                        <i class="icon-heart"></i>
+                                        <span>My Favourite</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("LogOff","Account")">
+                                        <i class="icon-exit"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    }
+                    else if (Request.IsAuthenticated == false)
+                    {
+                        <a class="tg-btn" href="@Url.Action("Login", "Account")" style="margin-left: 16px; background-color: white; color: black" id="login-btn">
+                            <span>Login</span>
+                        </a>
+                    }
+                    <a class="tg-btn" href="@Url.Action("Add", "Item")">
+                        <i class="icon-bookmark"></i>
+                        <span>post an ad</span>
+                    </a>
+                    <nav id="tg-nav" class="tg-nav">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-navigation" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

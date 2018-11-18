@@ -1,0 +1,114 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.UI.Mvc", "OnlineMarket\OnlineMarket.UI.Mvc.csproj", "{9DE2AE35-7CE0-4052-8F40-0F1CB60C19A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTemplate", "WebTemplate\WebTemplate.csproj", "{E1FD8376-5B9F-4D68-B011-36BECDC190FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.WebAPI", "OnlineMarket.WebAPI\OnlineMarket.WebAPI.csproj", "{962A5ED5-F02B-40A8-92B0-DEE05765641B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Services", "OnlineMarket.Services\OnlineMarket.Services.csproj", "{D148161C-8435-4C66-A136-5F6EF4DE46D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Repositories", "OnlineMarket.Repositories\OnlineMarket.Repositories.csproj", "{6A356A99-4C14-4241-B90C-6181C499C01A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.DAL", "OnlineMarket.DAL\OnlineMarket.DAL.csproj", "{4259DC77-0001-401D-84C7-9ACCAFACF421}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Common", "OnlineMarket.Common\OnlineMarket.Common.csproj", "{7F56FFA4-B1FE-426B-B3F5-E89C9846E5DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Resource", "OnlineMarket.Resource\OnlineMarket.Resource.csproj", "{C5B28503-7D2C-4563-81FB-B12AC2D86F0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.WebTemplate", "OnlineMarket.WebTemplate\OnlineMarket.WebTemplate.csproj", "{791CC405-75A4-4FD5-B286-C2079B03CBC0}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OnlineMarket.Database", "OnlineMarket.Database\OnlineMarket.Database.sqlproj", "{2FAC57D1-EF76-432C-80BE-625CF175A075}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DE2AE35-7CE0-4052-8F40-0F1CB60C19A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE2AE35-7CE0-4052-8F40-0F1CB60C19A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE2AE35-7CE0-4052-8F40-0F1CB60C19A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE2AE35-7CE0-4052-8F40-0F1CB60C19A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1FD8376-5B9F-4D68-B011-36BECDC190FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1FD8376-5B9F-4D68-B011-36BECDC190FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1FD8376-5B9F-4D68-B011-36BECDC190FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1FD8376-5B9F-4D68-B011-36BECDC190FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962A5ED5-F02B-40A8-92B0-DEE05765641B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962A5ED5-F02B-40A8-92B0-DEE05765641B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962A5ED5-F02B-40A8-92B0-DEE05765641B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962A5ED5-F02B-40A8-92B0-DEE05765641B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D148161C-8435-4C66-A136-5F6EF4DE46D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D148161C-8435-4C66-A136-5F6EF4DE46D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D148161C-8435-4C66-A136-5F6EF4DE46D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D148161C-8435-4C66-A136-5F6EF4DE46D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A356A99-4C14-4241-B90C-6181C499C01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A356A99-4C14-4241-B90C-6181C499C01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A356A99-4C14-4241-B90C-6181C499C01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A356A99-4C14-4241-B90C-6181C499C01A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4259DC77-0001-401D-84C7-9ACCAFACF421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4259DC77-0001-401D-84C7-9ACCAFACF421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4259DC77-0001-401D-84C7-9ACCAFACF421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4259DC77-0001-401D-84C7-9ACCAFACF421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F56FFA4-B1FE-426B-B3F5-E89C9846E5DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F56FFA4-B1FE-426B-B3F5-E89C9846E5DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F56FFA4-B1FE-426B-B3F5-E89C9846E5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F56FFA4-B1FE-426B-B3F5-E89C9846E5DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B28503-7D2C-4563-81FB-B12AC2D86F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B28503-7D2C-4563-81FB-B12AC2D86F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B28503-7D2C-4563-81FB-B12AC2D86F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B28503-7D2C-4563-81FB-B12AC2D86F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{791CC405-75A4-4FD5-B286-C2079B03CBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{791CC405-75A4-4FD5-B286-C2079B03CBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{791CC405-75A4-4FD5-B286-C2079B03CBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{791CC405-75A4-4FD5-B286-C2079B03CBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FAC57D1-EF76-432C-80BE-625CF175A075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FAC57D1-EF76-432C-80BE-625CF175A075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FAC57D1-EF76-432C-80BE-625CF175A075}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2FAC57D1-EF76-432C-80BE-625CF175A075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FAC57D1-EF76-432C-80BE-625CF175A075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FAC57D1-EF76-432C-80BE-625CF175A075}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://daoudakaleyire.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WebTemplate\\WebTemplate.csproj
+		SccProjectName1 = WebTemplate
+		SccLocalPath1 = WebTemplate
+		SccProjectUniqueName2 = OnlineMarket.WebAPI\\OnlineMarket.WebAPI.csproj
+		SccProjectName2 = OnlineMarket.WebAPI
+		SccLocalPath2 = OnlineMarket.WebAPI
+		SccProjectUniqueName3 = OnlineMarket.Services\\OnlineMarket.Services.csproj
+		SccProjectName3 = OnlineMarket.Services
+		SccLocalPath3 = OnlineMarket.Services
+		SccProjectUniqueName4 = OnlineMarket\\OnlineMarket.UI.Mvc.csproj
+		SccProjectName4 = OnlineMarket
+		SccLocalPath4 = OnlineMarket
+		SccProjectUniqueName5 = OnlineMarket.Repositories\\OnlineMarket.Repositories.csproj
+		SccProjectName5 = OnlineMarket.Repositories
+		SccLocalPath5 = OnlineMarket.Repositories
+		SccProjectUniqueName6 = OnlineMarket.DAL\\OnlineMarket.DAL.csproj
+		SccProjectName6 = OnlineMarket.DAL
+		SccLocalPath6 = OnlineMarket.DAL
+		SccProjectUniqueName7 = OnlineMarket.Common\\OnlineMarket.Common.csproj
+		SccProjectName7 = OnlineMarket.Common
+		SccLocalPath7 = OnlineMarket.Common
+		SccProjectUniqueName8 = OnlineMarket.Resource\\OnlineMarket.Resource.csproj
+		SccProjectName8 = OnlineMarket.Resource
+		SccLocalPath8 = OnlineMarket.Resource
+		SccProjectUniqueName9 = OnlineMarket.WebTemplate\\OnlineMarket.WebTemplate.csproj
+		SccProjectName9 = OnlineMarket.WebTemplate
+		SccLocalPath9 = OnlineMarket.WebTemplate
+		SccProjectUniqueName10 = OnlineMarket.Database\\OnlineMarket.Database.sqlproj
+		SccProjectName10 = OnlineMarket.Database
+		SccLocalPath10 = OnlineMarket.Database
+	EndGlobalSection
+EndGlobal

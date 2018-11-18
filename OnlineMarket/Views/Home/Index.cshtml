@@ -1,0 +1,208 @@
+﻿@model HomeViewModel
+@{
+    ViewBag.Title = "Welcome to Online Market";
+}
+
+<div id="tg-homebanner" class="tg-homebanner tg-haslayout">
+    <figure class="item" data-vide-bg="poster: @(Request.ApplicationPath.Equals("/") ? "" : Request.ApplicationPath)/images/slider/peter-wendt-123928-unsplash.jpg" data-vide-options="position: 50% 50%">
+        <figcaption>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="tg-bannercontent">
+                            <h1>Guinea’s Largest Marketplace</h1>
+                            <h2>Search from 12,45,754 Awesome Verified Ads!</h2>
+                            @using (Html.BeginForm("Search", "Item", FormMethod.Get, new { @class = "tg-formtheme tg-formbannersearch" }))
+                            {
+                                <fieldset>
+                                    <div class="form-group tg-inputwithicon">
+                                        <i class="icon-bullhorn"></i>
+                                        <input type="text" name="Title" class="form-control" placeholder="What are you looking for">
+                                    </div>
+                                    <div class="form-group tg-inputwithicon">
+                                        <i class="icon-location"></i>
+                                        <div class="tg-select">
+                                            <select name="LocationId">
+                                                <option value="">Your Location</option>
+                                                @foreach (var location in Model.locations)
+                                                {
+                                                    <option value="@location.Id">@location.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group tg-inputwithicon">
+                                        <i class="icon-layers"></i>
+                                        <div class="tg-select">
+                                            <select name="categoryId">
+                                                <option value="">Select Category</option>
+                                                @foreach (var category in Model.Categories)
+                                                {
+                                                    <option value="@category.Id">@category.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="tg-btn" type="submit">Search Now</button>
+                                </fieldset>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </figcaption>
+    </figure>
+</div>
+
+<main id="tg-main" class="tg-main tg-haslayout">
+    <!--************************************
+            Categories Search Start
+    *************************************-->
+    <section class="tg-haslayout">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-push-1 col-lg-10">
+                    <div class="tg-categoriessearch">
+                        <div class="tg-title">
+                            <h2><span>Boost your search with</span> Trending Categories</h2>
+                        </div>
+                        <div id="tg-categoriesslider" class="tg-categoriesslider tg-categories owl-carousel">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <div class="tg-category">
+                                    <div class="tg-categoryholder">
+                                        <figure><img src="~/images/icons/img-08.png" alt="image description"></figure>
+                                        <h3 style="text-align:center">@category.Name</h3>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--************************************
+            Categories Search End
+    *************************************-->
+    <!--************************************
+            Featured Ads Start
+    *************************************-->
+    <section class="tg-sectionspace tg-haslayout">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tg-sectionhead">
+                        <div class="tg-title">
+                            <h2>Featured Ads</h2>
+                        </div>
+                        <div class="tg-description">
+                            <p>Over 10,56,432 Featured Ads</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tg-ads">
+                    @foreach (var ad in Model.LatestPostedAds)
+                    {
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                            <div class="tg-ad tg-verifiedad">
+                                <figure>
+                                    <span class="tg-themetag tg-featuretag">featured</span>
+                                    <a href="@Url.Action("Details","Item",new {id = ad.Id })" style="height:200px;min-width:240px;background-image:url('@Url.Action("Image", "Item", new { id = ad.CoverPhotoId })');background-size:cover; background-position:center center;"></a>
+                                    <span class="tg-photocount">See @ad.PictureCount Photos</span>
+                                </figure>
+                                <div class="tg-adcontent">
+                                    <ul class="tg-productcagegories">
+                                        <li><a href="javascript:void(0);">@ad.Category</a></li>
+                                    </ul>
+                                    <div class="tg-adtitle">
+                                        <h3><a href="javascript:void(0);">@ad.Title</a></h3>
+                                    </div>
+                                    <time datetime="2017-06-06">Last Updated: @ad.CreatedDate</time>
+                                    <div class="tg-adprice"><h4>@ApplicationInfo.Currency @ad.Price.ToString("N")</h4></div>
+                                    <address>@ad.Location</address>
+                                    <div class="tg-phonelike">
+                                        <a class="tg-btnphone" href="javascript:void(0);">
+                                            <i class="icon-phone-handset"></i>
+                                            <span data-toggle="tooltip" data-placement="top" title="Show Phone No." data-last="@ad.SellerPhone"><em>Show Phone No.</em></span>
+                                        </a>
+                                        <span class="tg-like tg-liked"><i class="fa fa-heart"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tg-btnbox">
+                        <a class="tg-btn" href="@Url.Action("Search","Item")">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--************************************
+            Featured Ads End
+    *************************************-->
+    <!--************************************
+            Latest Posted Ads Start
+    *************************************-->
+    <section class="tg-sectionspace tg-bglight tg-haslayout">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tg-sectionhead">
+                        <div class="tg-title">
+                            <h2>Latest Posted Ads</h2>
+                        </div>
+                        <div class="tg-description">
+                            <p>Over 10,56,432 New Ads</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tg-ads tg-adsvtwo">
+                    @foreach (var ad in Model.LatestPostedAds)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="tg-ad tg-verifiedad">
+                                <figure>
+                                    @*<span class="tg-themetag tg-featuretag">featured</span>*@
+                                    <a href="@Url.Action("Details","Item",new {id = ad.Id })" style="height:203px;min-width:200px;background-image:url('@Url.Action("Image", "Item", new { id = ad.CoverPhotoId })');background-size:cover; background-position:center center;"></a>
+                                    <span class="tg-photocount">See @ad.PictureCount Photos</span>
+                                </figure>
+                                <div class="tg-adcontent">
+                                    <ul class="tg-productcagegories">
+                                        <li><a href="javascript:void(0);">@ad.Category</a></li>
+                                    </ul>
+                                    <div class="tg-adtitle">
+                                        <h3><a href="@Url.Action("Details","Item",new {id = ad.Id })">@ad.Title</a></h3>
+                                    </div>
+                                    <time datetime="2017-06-06">Last Updated: @ad.CreatedDate</time>
+                                    <div class="tg-adprice"><h4>@ApplicationInfo.Currency @ad.Price.ToString("N")</h4></div>
+                                    <address>@ad.Location</address>
+                                    <div class="tg-phonelike">
+                                        <a class="tg-btnphone" href="javascript:void(0);">
+                                            <i class="icon-phone-handset"></i>
+                                            <span data-toggle="tooltip" data-placement="top" title="Show Phone No." data-last="@ad.SellerPhone"><em>Show Phone No.</em></span>
+                                        </a>
+                                        <span class="tg-like"><i class="fa fa-heart"></i></span>
+                                        @*<span class="tg-like tg-liked"><i class="fa fa-heart"></i></span>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tg-btnbox">
+                        <a class="tg-btn" href="@Url.Action("Search","Item")">View All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--************************************
+            Latest Posted Ads End
+    *************************************-->
+</main>

@@ -1,0 +1,44 @@
+﻿<div class="modal fade tg-thememodal tg-categorymodal" tabindex="-1" role="dialog">
+    <div class="modal-dialog tg-thememodaldialog" role="document">
+        <button id="category-modal-close-btn" type="button" class="tg-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="modal-content tg-thememodalcontent">
+            <div class="tg-title">
+                <strong>Select Category</strong>
+            </div>
+            <div id="tg-dbcategoriesslider" class="tg-dbcategoriesslider tg-categories owl-carousel" data-bind="foreach: $root.FirstLevelCategories">
+                <div class="tg-category" data-bind="click: $root.selectLevelOneCategory">
+                    <div class="tg-categoryholder">
+                        <figure><img data-bind="attr: {src: ImageUrl }" alt="image description"></figure>
+                        <h3 data-bind="text: Name" style="text-align:center"></h3>
+                    </div>
+                </div>
+            </div>
+            <ul class="tg-subcategories">
+                <li>
+                    <div class="tg-title">
+                        <strong data-bind="text: SelectedLevelOneCategory() ? SelectedLevelOneCategory().Name : 'Nothing Selected'">None</strong>
+                    </div>
+                    <div class="tg-verticalscrollbar tg-dashboardscrollbar">
+                        <div data-bind="with: SelectedLevelOneCategory">
+                            <ul data-bind="foreach: getSubCategories()">
+                                <li class="tg-hassubcategories"><a href="#!" data-bind="text: Name, click: $root.selectLevelTwoCategory"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="tg-title">
+                        <strong data-bind="text: SelectedLevelTwoCategory() ? SelectedLevelTwoCategory().Name : 'Nothing Selected'">None</strong>
+                    </div>
+                    <div class="tg-verticalscrollbar tg-dashboardscrollbar">
+                        <div data-bind="with: SelectedLevelTwoCategory">
+                            <ul data-bind="foreach: getSubCategories()">
+                                <li><a href="#!" data-bind="text: Name, click: $root.selectLevelThreeCategory"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

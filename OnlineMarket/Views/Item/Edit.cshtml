@@ -1,0 +1,57 @@
+﻿@model EditItemViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutUserDashboard.cshtml";
+
+}
+
+<main id="tg-main" class="tg-main tg-haslayout">
+    <!--************************************
+            Section Start
+    *************************************-->
+    <section class="tg-dbsectionspace tg-haslayout">
+        <div class="row">
+
+            @using (Html.BeginForm("Edit", "Item", FormMethod.Post, new { @class = "tg-formtheme tg-formdashboard" }))
+            {
+                <fieldset>
+                    <div class="tg-postanad">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                            <div class="tg-dashboardbox">
+                                <div class="tg-dashboardboxtitle">
+                                    <h2>Edit Details</h2>
+                                </div>
+                                <div class="tg-dashboardholder">
+                                    @Html.ValidationSummary(false,"",new {@class = "text-danger" })
+                                    @Html.HiddenFor(x=>x.Id)
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.title, new { @class = "form-control", })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.DropDownListFor(x=>x.status, Model.StatusList, new {@class = "form-control" })
+                                    </div>
+
+                                    <div class="form-group tg-priceformgroup">
+                                        @Html.TextBoxFor(x => x.price, new { @class = "form-control", })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(x => x.description, new { @class = "tg-tinymceeditor", id= "tg-tinymceeditor" })
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <a href="@Url.Action("MyAds","Item")" class="tg-btn" style="margin-top:5px"> Back to list</a>   <button type="submit" class="tg-btn" style="margin-top:5px; display:inline"> Update</button>
+                        </div>
+
+                    </div>
+                </fieldset>
+            }
+           
+
+        </div>
+    </section>
+    <!--************************************
+            Section End
+    *************************************-->
+</main>

@@ -1,0 +1,231 @@
+﻿@model PasswordResetUserDetailsModel
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_UserDashboard_Layout.cshtml";
+}
+
+
+<main id="tg-main" class="tg-main tg-haslayout">
+    <!--************************************
+            Section Start
+    *************************************-->
+    <section class="tg-dbsectionspace tg-haslayout">
+        <div class="row">
+            @*<form class="tg-formtheme tg-formdashboard">*@
+            <fieldset>
+                <!--************************************
+                        Activity Start
+                *************************************-->
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tg-lgcolwidthhalf">
+                    <div class="tg-dashboardbox">
+                        <div class="tg-dashboardboxtitle">
+                            <h2>Profile Photo</h2>
+                        </div>
+                        <div class="tg-dashboardholder">
+                            <label class="tg-fileuploadlabel" for="tg-photogallery">
+                                <span>Drop files anywhere to upload</span>
+                                <span>Or</span>
+                                <span class="tg-btn">Select Files</span>
+                                <span>Maximum upload file size: 500 KB</span>
+                                <input id="tg-photogallery" class="tg-fileinput" type="file" name="file">
+                            </label>
+                            <div class="tg-horizontalthemescrollbar tg-profilephotogallery">
+                                <ul>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-01.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure class="tg-activephoto">
+                                            <img src="~/images/thumbnail/img-02.jpg" alt="image description">
+                                            <i class="fa fa-check-square-o"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-02.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-04.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-05.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-01.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-02.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="images/thumbnail/img-02.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-04.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="~/images/thumbnail/img-05.jpg" alt="image description">
+                                            <i class="icon-trash"></i>
+                                        </figure>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--************************************
+                        Activity End
+                *************************************-->
+                <!--************************************
+                        Approved Ads Start
+                *************************************-->
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tg-lgcolwidthhalf">
+                    <div class="tg-dashboardbox">
+                        <div class="tg-dashboardboxtitle">
+                            <h2>Profile Detail</h2>
+                        </div>
+                        <div class="tg-dashboardholder">
+                            @*<div class="form-group">
+                                    <strong>I’m a:</strong>
+                                    <div class="tg-selectgroup">
+                                        <span class="tg-radio">
+                                            <input id="tg-mail" type="radio" name="gender" value="mail" checked>
+                                            <label for="tg-mail">mail</label>
+                                        </span>
+                                        <span class="tg-radio">
+                                            <input id="tg-femail" type="radio" name="gender" value="femail">
+                                            <label for="tg-femail">femail</label>
+                                        </span>
+                                        <span class="tg-radio">
+                                            <input id="tg-company" type="radio" name="gender" value="company">
+                                            <label for="tg-company">Company</label>
+                                        </span>
+                                    </div>
+                                </div>*@
+                            @using (Html.BeginForm("UpdateUserDetails", "Account", FormMethod.Post))
+                            {
+                                if (ViewBag.UserDetailsUpdateSuccess != null)
+                                {
+                                    <div class="alert alert-success">
+                                        <strong>@ViewBag.UserDetailsUpdateSuccess</strong>
+                                    </div>
+                                }
+
+
+
+
+                                if (ViewData.ModelState.ContainsKey("PhoneNumber"))
+                                {
+                                       @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+
+
+                                }
+
+                                <div class="form-group">
+                                    <input class="form-control" name="Name" placeholder="Name" type="text" value="@Model.UserDetails.Name" />
+
+                                    @Html.ValidationMessageFor(x => x.UserDetails.Name, "", new { @class = "text-danger" })
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control" name="PhoneNumber" placeholder="PhoneNumber" type="text" value="@Model.UserDetails.PhoneNumber" />
+
+                                    @Html.ValidationMessageFor(x => x.UserDetails.PhoneNumber, "", new { @class = "text-danger" })
+
+                                </div>
+                                <button class="tg-btn" type="submit">Update</button>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <!--************************************
+                        Approved Ads End
+                *************************************-->
+                <!--************************************
+                        Approved Ads Start
+                *************************************-->
+
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 tg-lgcolwidthhalf">
+
+                    @using (Html.BeginForm("ResetPassword", "Account", FormMethod.Post))
+                    {
+                        if (ViewData.ModelState.ContainsKey("CurrentPassword"))
+                        {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+
+                        }
+                        if (ViewBag.PasswordUpdateSuccess != null)
+                        {
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.PasswordUpdateSuccess</strong>
+                            </div>
+                        }
+
+                        <div class="tg-dashboardbox">
+                            <div class="tg-dashboardboxtitle">
+                                <h2>Change Password</h2>
+                            </div>
+                            <div class="tg-dashboardholder">
+                                <div class="form-group">
+                                    @Html.ValidationMessageFor(x => x.passwordReset.CurrentPassword, "", new { @class = "text-danger" })
+                                    <input class="form-control" name="CurrentPassword" placeholder="Current Password" type="password" value="" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="NewPassword" placeholder="New Password" type="password" value="" />
+                                    @Html.ValidationMessageFor(x => x.passwordReset.NewPassword, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="ConfirmPassword" placeholder="Confirm Password" type="password" value="" />
+                                    @Html.ValidationMessageFor(x => x.passwordReset.ConfirmPassword, "", new { @class = "text-danger" })
+
+                                </div>
+                                <button class="tg-btn" type="submit">Change Now</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+
+
+                <!--************************************
+                        Approved Ads End
+                *************************************-->
+            </fieldset>
+            @*</form>*@
+        </div>
+    </section>
+    <!--************************************
+            Section End
+    *************************************-->
+</main>
+

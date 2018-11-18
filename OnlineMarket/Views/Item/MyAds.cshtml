@@ -1,0 +1,195 @@
+﻿
+@model List<Item>
+@{
+    ViewBag.Title = "My Ads";
+    Layout = "~/Views/Shared/_UserDashboard_Layout.cshtml";
+}
+
+<main id="tg-main" class="tg-main tg-haslayout">
+    <!--************************************
+            Section Start
+    *************************************-->
+    <section class="tg-dbsectionspace tg-haslayout">
+        <div class="row">
+            <form class="tg-formtheme tg-formdashboard">
+                <fieldset>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="tg-dashboardbox">
+                            <div class="tg-dashboardboxtitle">
+                                <h2>My Ads</h2>
+                            </div>
+                            <div class="tg-dashboardholder">
+                                @*<nav class="tg-navtabledata">
+                                        <ul>
+                                            <li class="tg-active"><a href="*">All Ads (50)</a></li>
+                                            <li><a href="*">Featured (12)</a></li>
+                                            <li><a href="javascript:void(0);" data-category="active">Active (42)</a></li>
+                                            <li><a href="javascript:void(0);" data-category="inactive">Inactive (03)</a></li>
+                                            <li><a href="javascript:void(0);" data-category="sold">Sold (02)</a></li>
+                                            <li><a href="javascript:void(0);" data-category="expired">Expired (01)</a></li>
+                                            <li><a href="javascript:void(0);" data-category="deleted">Deleted (03)</a></li>
+                                        </ul>
+                                    </nav>*@
+                                @*<div class="tg-otherfilters">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 pull-left">
+                                                <div class="form-group tg-sortby">
+                                                    <span>Sort by:</span>
+                                                    <div class="tg-select">
+                                                        <select>
+                                                            <option>Most Recent</option>
+                                                            <option>Most Recent</option>
+                                                            <option>Most Recent</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 pull-right">
+                                                <div class="form-group tg-inputwithicon">
+                                                    <i class="icon-magnifier"></i>
+                                                    <input type="search" name="search" class="form-control" placeholder="Search Here">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>*@
+                                @*<table id="tg-adstype" class="table tg-dashboardtable tg-tablemyads">*@
+                                <table id="useradsTable" class="useradsTable">
+                                    <thead>
+                                        <tr>
+                                            @*<th>
+                                                    <span class="tg-checkbox">
+                                                        <input id="tg-checkedall" type="checkbox" name="myads" value="checkall">
+                                                        <label for="tg-checkedall"></label>
+                                                    </span>
+                                                </th>*@
+                                            <th>Photo</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Status</th>
+                                            <th>Price</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @{
+                                            foreach (var item in Model)
+                                            {
+                                                <tr data-category="@item.ItemStatus.ToString()">
+                                                    @*<td data-title="">
+                                                            <span class="tg-checkbox">
+                                                                <input id="tg-adfour" type="checkbox" name="myads" value="myadfour">
+                                                                <label for="tg-adfour"></label>
+                                                            </span>
+                                                        </td>*@
+                                                    <td data-title="Photo"><img src="@Url.Action("Image","Item",new {Id = item.CoverPhotoId})" alt="image description"></td>
+                                                    <td data-title="Title">
+                                                        <h6>@item.Name</h6>
+                                                    </td>
+                                                    <td data-title="Category">
+                                                        <h6> @item.Category.Name</h6>
+                                                   
+                                                    </td>
+                                                    @{
+                                                        string statusClass = "tg-adstatus tg-adstatus" + item.ItemStatus.ToLower();
+                                                    }
+                                                    <td data-title="Ad Status"><span class="@statusClass">@item.ItemStatus</span></td>
+                                                    <td data-title="Price &amp; Location">
+                                                        <h6>@ApplicationInfo.Currency @item.Price</h6>
+                                                        @*<address>location  @item.Location.Name</address>*@
+                                                    </td>
+                                                    <td data-title="Date">
+                                                         <h6><time datetime="2017-08-08">@item.CreatedDate</time></h6>
+                                                    </td>
+                                                    <td data-title="Action">
+                                                        <div class="tg-btnsactions">
+                                                            <a class="tg-btnaction tg-btnactionview" href="@Url.Action("Details","Item",new { Id = item.Id })"><i class="fa fa-eye"></i></a>
+                                                            <a class="tg-btnaction tg-btnactionedit" href="@Url.Action("Edit", "Item", new { Id = item.Id })"><i class="fa fa-pencil"></i></a>
+                                                            <a class="tg-btnaction tg-btnactiondelete" onclick="DeleteAdd(@item.Id)"><i class="fa fa-trash"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                                @*<nav class="tg-pagination">
+                                        <ul>
+                                            <li class="tg-prevpage"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li class="tg-active"><a href="#">5</a></li>
+                                            <li>...</li>
+                                            <li><a href="#">10</a></li>
+                                            <li class="tg-nextpage"><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                        </ul>
+                                    </nav>*@
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+    <!--************************************
+            Section End
+    *************************************-->
+</main>
+@section Scripts{
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.css">
+
+    <script type="text/javascript" charset="utf8" src="~/DataTables/datatables.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        $('#useradsTable').DataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": 0 }
+            ]
+        });
+
+    });
+        function DeleteAdd(Id) {
+            var result = confirm("Are you sure you wanna delete this");
+            if (result) {
+
+                //location.reload(true)
+                Delete(Id);
+            }
+
+        }
+          function Delete(Id) {
+                $.ajax({
+                    url: '@Url.Action("Delete","Item")',
+                    method : "Post",
+                    data: {
+                      id : Id
+                    }
+                    //succcess: function (result) {
+                    //    if (result) {
+                    //        location.reload(true)
+                    //    }
+                    //}
+                }).done(function (msg) {
+                    alert("Item has been successfully deleted");
+                    location.reload(true);
+                })
+            }
+        $(document).ready(function () {
+
+
+
+        });
+
+    </script>
+}
+

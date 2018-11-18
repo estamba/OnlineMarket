@@ -1,0 +1,29 @@
+﻿@model OnlineMarket.Models.ItemListViiewModel
+
+
+@{
+    foreach (var item in Model.ItemList)
+    {
+        <div class="item-list">
+            <div class="col-sm-2 no-padding photobox">
+                <div class="add-image"> <span class="photo-count"><i class="fa fa-camera"></i> 2 </span> <a href="ads-details.html"><img class="thumbnail no-margin" src="data: image;base64,@System.Convert.ToBase64String(item.ItemImages.FirstOrDefault().Image.ImageContent)" alt="img"></a> </div>
+            </div>
+            <!--/.photobox-->
+            <div class="col-sm-7 add-desc-box">
+                <div class="add-details">
+                    <h5 class="add-title"> <a href="ads-details.html"> @item.name</a> </h5>
+                    <span class="info-row"> <span class="add-type business-ads tooltipHere" data-toggle="tooltip" data-placement="right" title="Business Ads">B </span> <span class="date"><i class=" icon-clock"> </i> @item.CreatedDate</span> - <span class="category">@item.Category.name </span>- <span class="item-location"><i class="fa fa-map-marker"></i> @item.Location.City.name </span> </span>
+                </div>
+
+            </div>
+            <!--/.add-desc-box-->
+            <div class="col-sm-3 text-right  price-box">
+                <h2 class="item-price"> @item.price </h2>
+                <a class="btn btn-default  btn-sm make-favorite"> <i class="fa fa-heart"></i> <span>Save</span> </a>
+            </div>
+            <!--/.add-desc-box-->
+        </div>
+
+    }
+}
+

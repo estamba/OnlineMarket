@@ -1,0 +1,41 @@
+﻿@model PaginatedList<PostedAdListItem>
+
+
+<div class="tg-ads tg-adsvtwo tg-adslist" id="listView">
+    <div class="row">
+        @{
+            foreach (var ad in Model.Results)
+            {
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tg-ad tg-verifiedad">
+                        <figure>
+                            @*<span class="tg-themetag tg-featuretag">featured</span>*@
+                            <a href="@Url.Action("Details", "Item", new { Id = ad.Id })" style="height:200px;min-width:200px;background-image:url('@Url.Action("Image", "Item", new { id = ad.CoverPhotoId })');background-size:cover; background-position:center center;"></a>
+                            <span class="tg-photocount">See @ad.PictureCount Photos</span>
+                        </figure>
+                        <div class="tg-adcontent">
+                            <ul class="tg-productcagegories">
+                                <li><a href="javascript:void(0);">@ad.Category</a></li>
+                            </ul>
+                            <div class="tg-adtitle">
+                                <h3><a href="@Url.Action("Details", "Item", new { Id = ad.Id })"> @ad.Title</a></h3>
+                            </div>
+                            <time datetime="2017-06-06">Last Updated: 4 hours ago</time>
+                            <div class="tg-adprice"><h4>@ApplicationInfo.Currency @ad.Price</h4></div>
+                            <address>@ad.Location</address>
+                            <div class="tg-phonelike">
+                                <a class="tg-btnphone" href="javascript:void(0);">
+                                    <i class="icon-phone-handset"></i>
+                                    <span data-toggle="tooltip" data-placement="top" title="Show Phone No." data-last="@ad.SellerPhone"><em>Show Phone No.</em></span>
+                                </a>
+                                <span class="tg-like tg-liked"><i class="fa fa-heart"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+    </div>
+</div>

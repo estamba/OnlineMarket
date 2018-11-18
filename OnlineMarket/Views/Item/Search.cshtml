@@ -1,0 +1,274 @@
+﻿
+@model   PaginatedList<PostedAdListItem>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <!--************************************
+                Home Slider End
+        *************************************-->
+        <!--************************************
+                Main Start
+        *************************************-->
+        <main id="tg-main" class="tg-main tg-haslayout">
+            <!--************************************
+                    About Us Start
+            *************************************-->
+            <div class="container">
+                <div class="row">
+                    <div id="tg-twocolumns" class="tg-twocolumns">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="tg-pagehead">
+                                
+                                @{
+                                    string title = Request["Title"];
+                                    if (!string.IsNullOrEmpty(title))
+                                    {
+                                        string text = "\"" + title + "\"";
+                                        <h1>Results for @text </h1>
+                                    }
+                                }
+                                <p>@Model.Results.Count Results on @string.Format("{0:MMMM d, yyyy}", DateTime.Now)</P>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+                            <aside id="tg-sidebar" class="tg-sidebar">
+                                @{
+                                    using (Html.BeginForm("Search", "Item", FormMethod.Get, new { @class = "tg-formtheme tg-formnerrowsearch",id= "searchForm" }))
+                                    {
+                                            <div class="tg-sidebartitle"><h2>Narrow Your Search:</h2></div>
+                                            <fieldset>
+                                                @Html.Hidden("SortDirection","desc")
+                                                @Html.Hidden("page")
+                                                <div id="tg-narrowsearchcollapse" class="tg-themecollapse tg-narrowsearchcollapse">
+                                                    <div class="tg-collapsetitle">
+                                                        <i class="fa fa-rotate-left"></i>
+                                                        <span class="fa fa-angle-down">By Title/Keyword</span>
+                                                    </div>
+                                                    <div class="tg-themecollapsecontent">
+                                                        <div class="form-group tg-inputwithicon">
+                                                            <i class="icon-magnifier"></i>
+                                                            <input type="search" name="Title" class="form-control" placeholder="Search Title/Keyword">
+                                                        </div>
+                                                    </div>
+                                                    <div class="tg-collapsetitle">
+                                                        <i class="fa fa-rotate-left"></i>
+                                                        <span class="fa fa-angle-down">By Category</span>
+                                                    </div>
+                                                    <div class="tg-themecollapsecontent">
+                                                        <div class="form-group">
+                                                            <div class="tg-select">
+                                                                @Html.DropDownList("CategoryId",new SelectList (ViewBag.Categories,"Id","Name"),"--Select a category--")
+                                                                @*<select>
+                                                                    <option value="Select Category">Select Category</option>
+                                                                    <option value="Select Category">Select Category</option>
+                                                                    <option value="Select Category">Select Category</option>
+                                                                </select>*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tg-collapsetitle">
+                                                        <i class="fa fa-rotate-left"></i>
+                                                        <span class="fa fa-angle-down">By Location</span>
+                                                    </div>
+                                                    <div class="tg-themecollapsecontent">
+                                                        <div class="form-group">
+                                                            <div class="tg-select">
+                                                                @Html.DropDownList("LocationId", new SelectList(ViewBag.Locations, "Id", "Name"), "--Select a location--")
+                                                      </div>
+                                                        </div>
+                                                        @*<div class="form-group tg-inputwithicon">
+                                                            <i class="fa fa-crosshairs"></i>
+                                                            <input type="text" name="location" class="form-control" placeholder="Location">
+                                                        </div>*@
+                                                    </div>
+                                                    <div class="tg-collapsetitle">
+                                                        <i class="fa fa-rotate-left"></i>
+                                                        <span class="fa fa-angle-down">By Price Range</span>
+                                                    </div>
+                                                    <div class="tg-themecollapsecontent">
+                                                        <div class="form-group">
+                                                            <input type="text" name="StartPrice" class="form-control" placeholder="Minimum Price ($)">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" name="EndPrice" class="form-control" placeholder="Maximum Price ($)">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                @Html.Hidden("viewStyle", (string)ViewBag.viewStyle)
+                                                <button type="submit" class="tg-btn">apply filter</button>
+                                            </fieldset>
+                                        
+                                    }
+                                }
+                              
+                            </aside>
+                        </div>
+                       
+                        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+                            <div id="tg-content" class="tg-content">
+                                <div class="tg-contenthead">
+                                    <div class="tg-sortandview">
+                                        <div class="tg-sortby">
+                        <strong>Sort by:</strong>
+                        <div class="tg-select">
+                            <select id="sortOPtion">
+                                <option >--Order by--</option>
+
+                                <option value="desc">Most Recent</option>
+                                <option value="asc">Oldest</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tg-views">
+                        <strong>View As Grid</strong>
+                        <ul>
+                            <li class="tg-active" id="liGridOption"><a id ="aGridOption"href="javascript:void(0);"><i class="fa fa-th-large"></i></a></li>
+                            <li id="liListOption"><a id="aListOption" href="javascript:void(0);"><i class="fa fa-reorder"></i></a></li>
+                        </ul>
+                    </div>
+                                    </div>
+                        </div>
+                                @{ 
+                                    Html.RenderPartial("_SearchResultsListView");
+                                    Html.RenderPartial("_SearchResultsGridView");
+
+                                }
+                             
+                                @{
+                                    int pageCount = Model.ActualSize / Model.PageSize;
+                                    if((Model.ActualSize % Model.PageSize) != 0)
+                                    {
+                                        pageCount++;
+                                    }
+
+                                    if (pageCount > 1)
+                                    {
+                                        <nav class="tg-pagination">
+                                            <ul>
+                                                <li class="tg-prevpage"><a href="#" id="prev"><i class="fa fa-angle-left"></i></a></li>
+                                                @{
+                                                    int pageNumber;
+                                                    int i = 1;
+                                                    for (; i <= pageCount; i++)
+                                                    {
+                                                        pageNumber = i;
+                                                        if (i == Model.PageIndex)
+                                                        {
+                                                            <li class="tg-active"><a href="#" class="piginationItem" data-index="@pageNumber">@pageNumber</a></li>
+
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <li><a href="#" class="piginationItem" data-index="@pageNumber">@pageNumber</a></li>
+
+
+                                                        }
+                                                        if (i == 5)
+                                                        {
+                                                            <li>...</li>
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                                <li class="tg-nextpage"><a href="#" id="next"><i class="fa fa-angle-right"></i></a></li>
+
+
+                                            </ul>
+                                        </nav>
+                                                    }
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--************************************
+                    About Us End
+            *************************************-->
+        </main>
+            @section Script{
+                <script>
+                    var viewStyle = '@ViewBag.viewStyle';
+                    var currentPage = @Model.PageIndex;
+                    var pageCount = @pageCount;
+
+
+                    $(document).ready(function () {
+
+                        $("#sortOPtion").change(function(){
+                            var value = $(this).val();
+                            $("#SortDirection").attr("value", value);
+                            $("#searchForm").submit();
+
+                        })
+
+                        if(viewStyle == "list"){
+                            ShowListView();
+
+                        }
+                        else{
+                            ShowGridView();
+
+                        }
+                      
+                        $(".piginationItem").click(function () {
+                            var index = $(this).data("index");
+
+                            $("#page").attr("value", index);
+                            $("#searchForm").submit();
+                            return false;
+                        })
+                        $("#next").click(function () {
+                            if(currentPage>= pageCount)
+                            {
+                                return false;
+                            }
+                            var index = currentPage + 1;
+                            $("#page").attr("value", index);
+                            $("#searchForm").submit();
+                        })
+                        $("#prev").click(function () {
+                            if (currentPage == 1) {
+                                return false;
+                            }
+                            var index = currentPage - 1;
+                            $("#page").attr("value", index);
+                            $("#searchForm").submit();
+                        })
+
+                        $("#aGridOption").click(function(){
+                            ShowGridView();
+                        })
+                        $("#aListOption").click(function(){
+                            ShowListView();
+                        })
+
+                    })
+                    var ShowGridView = function(){
+                        $("#listView").hide();
+                        $("#gridView").show();
+                        $("#viewStyle").attr("value", "grid");
+                        $("#liListOption").removeClass("tg-active");
+                        $("#liGridOption").removeClass("tg-active").addClass("tg-active");
+
+                    }
+                    var ShowListView = function (){
+                        $("#gridView").hide();
+                        $("#listView").show();
+                        $("#viewStyle").attr("value", "list");
+                        $("#liGridOption").removeClass("tg-active");
+                        $("#liListOption").removeClass("tg-active").addClass("tg-active");;
+
+
+
+                    }
+                </script>
+                
+                }
+    

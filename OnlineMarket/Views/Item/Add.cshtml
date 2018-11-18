@@ -1,0 +1,149 @@
+﻿@using OnlineMarket.DAL;
+@{
+    ViewBag.Title = "Post An Ad";
+    Layout = "~/Views/Shared/_LayoutUserDashboard.cshtml";
+}
+
+@section PageHeader{
+    <div class="tg-dashboardbanner">
+        <h1>Post New Ad</h1>
+        <ol class="tg-breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li class="tg-active">Post an Ad</li>
+        </ol>
+    </div>
+}
+
+<form class="tg-formtheme tg-formdashboard" method="post" enctype="multipart/form-data" id="post-ad-form">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="tg-postanad">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                <div class="tg-dashboardbox">
+                    <div class="tg-dashboardboxtitle">
+                        <h2>Ad Detail</h2>
+                    </div>
+                    <div class="tg-dashboardholder">
+                        @*<div class="form-group text-center">
+                            <a href="#" class="tg-btn" data-toggle="modal" data-target=".tg-categorymodal">Select Category Here</a>
+                        </div>*@
+                        @*<div class="form-group" data-bind="visible: SelectedLevelTwoCategory">
+                            <ol class="tg-categorysequence">
+                                <li data-bind="text: SelectedLevelOneCategory() ? SelectedLevelOneCategory().Name: ''"></li>
+                                <li data-bind="visible: SelectedLevelTwoCategory"><span data-bind="text: SelectedLevelTwoCategory() ? SelectedLevelTwoCategory().Name: ''"></span></li>
+                                <li data-bind="visible: SelectedLevelThreeCategory"><span data-bind="text: SelectedLevelThreeCategory() ? SelectedLevelThreeCategory().Name : ''"></span></li>
+                            </ol>
+                        </div>*@
+                        <div class="form-group">
+                            <div class="tg-select">
+                                <select data-bind="options: FirstLevelCategories, optionsText: 'Name', value: SelectedLevelOneCategory, optionsCaption: 'Select category...'"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="visible: SelectedLevelOneCategory, with: SelectedLevelOneCategory">
+                            <div class="tg-select">
+                                <select data-bind="options: getSubCategories(), optionsText: 'Name', value: $root.SelectedLevelTwoCategory, optionsCaption: 'Select sub-category...'"></select>
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="visible: SelectedLevelTwoCategory, with: SelectedLevelTwoCategory">
+                            <div class="tg-select">
+                                <select data-bind="options: getSubCategories(), optionsText: 'Name', value: $root.SelectedLevelThreeCategory, optionsCaption: 'Select sub-category...'"></select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="CategoryId" data-bind="value: SelectedLevelThreeCategory() ? SelectedLevelThreeCategory().Id : (SelectedLevelTwoCategory() ? SelectedLevelTwoCategory().Id : (SelectedLevelOneCategory() ? SelectedLevelOneCategory().Id : ''))" />
+                        <div class="form-group">
+                            <input type="text" name="Name" class="form-control" placeholder="Title*">
+                        </div>
+                        <div class="form-group tg-priceformgroup">
+                            <div class="tg-checkbox">
+                                <input id="tg-priceoncall" type="checkbox" name="priceoncall" value="on">
+                                <label for="tg-priceoncall">Price On Call</label>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">@ApplicationInfo.Currency</span>
+                                <input type="number" name="Price" class="form-control" placeholder="Price*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="tg-select">
+                                <select data-bind="options: Cities, optionsText: 'Name', value: SelectedCity, optionsCaption: 'Select city...'"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="tg-select" data-bind="with: SelectedCity">
+                                <select data-bind="options: Locations, optionsText: 'Name', optionsCaption: 'Select location...', value: $root.SelectedLocation"></select>
+                            </div>
+                            <input type="hidden" data-bind="value: SelectedLocation() ? SelectedLocation().Id : ''" name="LocationId" />
+                        </div>
+                        <div class="form-group">
+                            <textarea id="tg-tinymceeditor" class="tg-tinymceeditor" name="Description"></textarea>
+                        </div>
+                        <label class="tg-fileuploadlabel" for="tg-photogallery" data-bind="click: $root.selectImage">
+                            <span>Drop files anywhere to upload</span>
+                            <span>Or</span>
+                            <span class="tg-btn">Select Images</span>
+                            <span>Maximum upload file size: 500 KB</span>
+                        </label>
+                        <div style="display:none;" data-bind="foreach: AdImages">
+                            <input type="file" name="images" accept="image/*" data-bind="event: {change: $root.imageUpload}, attr: { id: 'ad-image-' + ($index()+1) }">
+                        </div>
+                        <div class="tg-horizontalthemescrollbar tg-profilephotogallery">
+                            <ul data-bind="foreach: AdImages">
+                                <li>
+                                    <figure>
+                                        <img src="~/images/thumbnail/img-02.jpg" alt="image description" width="150" data-bind="attr: { id: 'image-' + ($index() + 1)}" style="display:none;" >
+                                        <i class="icon-trash" data-bind="click: $root.deleteImage, attr: { 'data-index': ($index() + 1)}"></i>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="color:red; display: none;" id="large-img-msg">
+                            <span>Sorry, your image size cannot be larger than 500KB.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+                <div class="tg-dashboardbox tg-contactdetail">
+                    <div class="tg-dashboardboxtitle">
+                        <h2>Contact Detail</h2>
+                    </div>
+                    @{ 
+                        var seller = (Seller)ViewBag.Seller;
+                    }
+                    <div class="tg-dashboardholder">
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="@seller.Name" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="@seller.PhoneNumber" disabled="disabled">
+                        </div>
+                        <div class="tg-checkbox">
+                            <input id="tg-agreetermsandrules" type="checkbox" name="agreetermsandrules" data-bind="checked: AgreedTerms">
+                            <label for="tg-agreetermsandrules">I agree to all <a href="#">Terms of Use &amp; Posting Rules</a></label>
+                        </div>
+                        <button class="tg-btn" type="submit" data-bind="click: removeEmptyFileInputs, enable: AgreedTerms">Post Ad</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+@*@Html.Partial("_PartialCategoryModal")*@
+
+@section Scripts{
+    <script>
+        /* Passing c# objects to javascript */
+        var categoryList = @Html.Raw(Json.Encode(ViewBag.Categories));
+        var cityList = @Html.Raw(Json.Encode(ViewBag.Cities));
+        var locationList = @Html.Raw(Json.Encode(ViewBag.Locations));
+    </script>
+
+    <script src="~/Scripts/knockout-3.4.2.js"></script>
+    <script src="~/assets/js/Item/Add.js"></script>
+    <script>
+        $(document).ready(function () {
+            PostAnAd.init();
+        });
+    </script>
+}
